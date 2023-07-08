@@ -26,4 +26,10 @@ Se crea un @RestControllerAdvice para controlar los errores en el código y asi 
 
 ![h2config Image](./images/exceptioncontroller.png)
 
-![Test Image](./images/6testincode.png)
+Por último, se crea un Util para realizar el mapeo de la salida y la lógica para validar si esta dentro de las fechas en la BD
+
+![h2config Image](./images/util.png)
+
+## Flujo de test unitarios
+
+Lo primero fue crear las etiquetas @SpringBootTest y @AutoConfigureMockMvc, se traen las clases principales a usar en los test con @Autowired y lo más importante para iniciar es el @BeforeEach en el cual se guardaran las 4 listas a la BD H2 antes de iniciar la ejecución de los test
