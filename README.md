@@ -5,30 +5,30 @@ Prueba técnica para Innoqa, usando SpringBoot 3.1.1 y Java 17.
 
  - Lo primero que se hizo fue configurar la BD h2 en memorias mediante el archivo application.properties 
 
-![h2config Image](./images/h2config.png)
+![dev Image](./images/h2config.png)
 
  - Luego empezamos a crear las entidades para darle forma a las tablas.
 
-![h2config Image](./images/pricesentity.png)
-![h2config Image](./images/brandentity.png)
+![dev Image](./images/pricesentity.png)
+![dev Image](./images/brandentity.png)
 
  - Luego se creo los @Repository utilizando la herencia a JPA para la conexión a la BD.
 
-![h2config Image](./images/brandrepo.png)
-![h2config Image](./images/pricesrepo.png)
+![dev Image](./images/brandrepo.png)
+![dev Image](./images/pricesrepo.png)
 
  - Luego se crearon los @RestController para construir los endpoint y generar las consultas.
 
-![h2config Image](./images/brandcontroller.png)
-![h2config Image](./images/pricescontroller.png)
+![dev Image](./images/brandcontroller.png)
+![dev Image](./images/pricescontroller.png)
 
  - Se crea un @RestControllerAdvice para controlar los errores en el código y asi validar el correcto funcionamiento del mismo
 
-![h2config Image](./images/exceptioncontroller.png)
+![dev Image](./images/exceptioncontroller.png)
 
  - Por último, se crea un Util para realizar el mapeo de la salida y la lógica para validar si esta dentro de las fechas en la BD
 
-![h2config Image](./images/util.png)
+![dev Image](./images/util.png)
 
 ## Flujo de test unitarios
 
@@ -42,6 +42,7 @@ Prueba técnica para Innoqa, usando SpringBoot 3.1.1 y Java 17.
 
  - Una vez tenemos data lista, creamos los 6 test requeridos por la prueba técnica, en los cuales, cada uno trae la siguiente linea de código para validar la funcionalidad de los mismos:  
       result.andExpect(status().isOk()).andExpect(jsonPath("$[0].price").value(35.50)); //Valor esperado
+   
 ![test Image](./images/untest.png)
 ![test Image](./images/focustest.png)
 
@@ -61,4 +62,16 @@ Prueba técnica para Innoqa, usando SpringBoot 3.1.1 y Java 17.
 
  - Ya con data, podemos empezar a realizar las consultas, en este caso, realice 5 consultas en postman tal cual se requeria en los test, y una adicional para traer todas las listas de la tabla.
 
-![prueba Image](./images/test1.png) ![prueba Image](./images/test2.png) ![prueba Image](./images/test3.png) ![prueba Image](./images/test4.png) ![prueba Image](./images/test5.png) ![prueba Image](./images/getAll.png)
+Test 1: petición a las 10:00 del día 14 del producto 35455   para la brand 1 (ZARA)
+![prueba Image](./images/test1.png) 
+Test 2: petición a las 16:00 del día 14 del producto 35455   para la brand 1 (ZARA)
+![prueba Image](./images/test2.png) 
+Test 3: petición a las 21:00 del día 14 del producto 35455   para la brand 1 (ZARA)
+![prueba Image](./images/test3.png) 
+Test 4: petición a las 10:00 del día 15 del producto 35455   para la brand 1 (ZARA)
+![prueba Image](./images/test4.png) 
+Test 5: petición a las 21:00 del día 16 del producto 35455   para la brand 1 (ZARA)
+![prueba Image](./images/test5.png) 
+Consumo adicional, traer todos los registros.
+![prueba Image](./images/getAll.png)
+
